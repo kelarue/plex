@@ -1,0 +1,13 @@
+{
+	"id" : "plex",
+	"name" : "Plex Media",
+	"description" : "Plugin pour récupérer les bibliothèques d'un serveur plex et de diffuser sur un équipement",
+	"licence" : "GPL",
+	"author" : "Larkev",
+	"require" : "3.2",
+	"category" : "multimedia",
+	"changelog" : "",
+	"documentation" : "",
+	"language" : "",
+	"compatibility" : ""	
+}
