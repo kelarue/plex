@@ -1,14 +1,20 @@
-<link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
-<?php var_dump($this); ?>
+<link rel="stylesheet" type="text/css" href="http://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
 <div class="row">
 	<div class="caroussel_plex">
-		#connect#
+		
 	</div>
 </div>
 
-<script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
-<script>
-	$(document).ready(function(){
-		$(".caroussel_plex").slick();
-	});
+<script type="text/javascript" src="http://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+<script type="text/javascript">
+	
+	jeedom.cmd.update['#id#'] = function(_options){
+		$(".caroussel_plex").append((_options["display_value"]));
+		setTimeout(function(){
+			$(".caroussel_plex").slick();
+		},1000);
+		
+	}
+	
+	jeedom.cmd.update['#id#']({display_value:'#state#',valueDate:'#valueDate#',collectDate:'#collectDate#',alertLevel:'#alertLevel#'});
 </script>

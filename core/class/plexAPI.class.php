@@ -581,7 +581,6 @@ class plexAPI
 	{
 		$query['X-Plex-Token'] = $this->plexServer['token'];
 		$url = $this->plexServer['scheme'].'://'.$this->plexServer['domain'].':'.$this->plexServer['port'].$path.$item.$filter.'?'.http_build_query($query);
-		var_dump($url);
 
 		$this->plexURL[] = $url;
 		$libraryIndex = $this->loadXMLFile($url);

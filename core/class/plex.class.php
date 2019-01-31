@@ -178,24 +178,12 @@ class plex extends eqLogic  {
 		$plexScriptInfo["script_guid"] = plexAPI::generateGUID();
 		$plex = new plexAPI($plexServer,$plexScriptInfo);
 		$elements = ($plex->getRecentlyAdded('movie'));
-		//$lignes = "<div class='col-lg-12 your-class'>";
 		
 		foreach($elements["items"] as $item)
-		{
-			
-			//$lignes .= ($item["title"]."<br>");
+		{	
 			$lignes .= "<img width='auto' height='300px' src='".$plexServer["scheme"]."://".$plexServer["domain"].":".$plexServer["port"]."".($item["thumb"])."?X-Plex-Token=".$plex->getToken()."' />";
 		}
-		//$lignes .= "</div>";
-
-		//$lignes .='<link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>';
-
-		//$lignes .= "<script type='text/javascript' src='//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js'></script>";	
-			// $lignes .= "<script>
-				// $(document).ready(function(){
-				  // $(\".your-class\").slick();
-				// });
-			  // </script>";
+		
 		return $lignes;
      }
 
@@ -237,11 +225,17 @@ class plexCmd extends cmd {
 
     public function execute($_options = array()) 
     {
+		$originalLogicalId = $this->getLogicalId();
+		
 		$eqlogic = $this->getEqLogic(); //récupère l'éqlogic de la commande $this
+		
+		
 		switch ($this->getLogicalId()) {	//vérifie le logicalid de la commande 			
 			case 'refresh': // LogicalId de la commande rafraîchir que l’on a créé dans la méthode Postsave de la classe plex . 
 				$info = $eqlogic->recentlyAdded(); 	//On lance la fonction randomVdm() pour récupérer une plex et on la stocke dans la variable $info
-				$eqlogic->checkAndUpdateCmd('connect', $info); // on met à jour la commande avec le LogicalId "story"  de l'eqlogic 
+				//$elements = $eqlogic->checkAndUpdateCmd('connect', $info); // on met à jour la commande avec le LogicalId "story"  de l'eqlogic 
+				// ($info);
+				$_options['data'] = $info;
 				break;
 		}
     }
